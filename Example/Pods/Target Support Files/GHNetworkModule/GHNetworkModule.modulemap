@@ -1,0 +1,6 @@
+framework module GHNetworkModule {
+  umbrella header "GHNetworkModule-umbrella.h"
+
+  export *
+  module * { export * }
+}

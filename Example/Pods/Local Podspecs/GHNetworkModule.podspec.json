@@ -1,0 +1,30 @@
+{
+  "name": "GHNetworkModule",
+  "version": "1.1.4",
+  "summary": "AF二次封装",
+  "description": "组件简介：\n基于AFN的二次封装网络组件.\n增加缓存功能\n由于服务器对post方法中， methodPath后面的斜杆不能去掉， 所以修改了GHNetworkRequest 42行代码\n修改了GHNetworkResponse。116行，原因是服务器修改了http返回的成功code，导致这边直接走失败的提示，但是失败的提示不正确\n增加了网络判断， 在发送消息的时候，如果启动的网络监听， 则判断网络， 如果没有启动， 不判断\n增加TaskId的判断\n修改了cache的保存\n修改了图片的上传",
+  "homepage": "http://gitea.gosund.com:3000/GHGroup/GHNetworkModule",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Qincc": "418891087@qq.com"
+  },
+  "source": {
+    "git": "http://gitea.gosund.com:3000/GHGroup/GHNetworkModule.git",
+    "tag": "1.1.4"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "GHNetworkModule/Classes/**/*",
+  "dependencies": {
+    "AFNetworking": [
+
+    ],
+    "YYCache": [
+
+    ]
+  }
+}

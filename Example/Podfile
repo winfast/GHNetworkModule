@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'GHNetworkModule_Example' do
+  pod 'GHNetworkModule', :path => '../'
+  pod 'MJExtension'
+
+  target 'GHNetworkModule_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
