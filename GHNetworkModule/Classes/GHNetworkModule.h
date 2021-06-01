@@ -100,8 +100,9 @@
 /// @param request request请求
 /// @param data 图片数据
 /// @param progress 进度
+/// @param imageKey data字段， 根据协议指定
 /// @param complete 完成block
-- (NSString *)requestMultipartData:(GHNetworkRequest *)request data:(NSData *)data progress:(void (^)(NSProgress *downloadProgress))progress complete:(GHNetworkResponseBlock)complete;
+- (NSString *)requestMultipartData:(GHNetworkRequest *)request data:(NSData *)data imageKey:(NSString *)imageKey progress:(void (^)(NSProgress *downloadProgress))progress complete:(GHNetworkResponseBlock)complete;
 
 - (void)clearCache:(BOOL)isAsyc;
 

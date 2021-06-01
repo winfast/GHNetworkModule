@@ -64,7 +64,7 @@
     return request.copy;
 }
 
-- (NSURLRequest *)formDataRequest:(NSData *)imageData {
+- (NSURLRequest *)formDataRequest:(NSData *)imageData imageKey:(NSString *)imageKey {
     AFHTTPRequestSerializer *serializer = [self httpRequestSerializer];
     // 变更超时设置
     [serializer willChangeValueForKey:@"timeoutInterval"];
@@ -78,10 +78,10 @@
     NSString *urlString = [self.baseURL stringByAppendingString:self.methodPath];
    // NSMutableURLRequest *request = [serializer requestWithMethod:[self httpMethod] URLString:urlString parameters:parameters error:NULL];
     
-    NSMutableURLRequest *request = [serializer multipartFormRequestWithMethod:[self httpMethod] URLString:urlString parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    NSMutableURLRequest *request = [serializer multipartFormRequestWithMethod:[self httpMethod] URLString:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSUInteger time = [NSDate.date timeIntervalSince1970] * 1000;
         NSString *fileName = [NSString stringWithFormat:@"%ld.jpg",time];
-        [formData appendPartWithFileData:imageData name:@"portrait" fileName:fileName mimeType:@"image/*"];
+        [formData appendPartWithFileData:imageData name:imageKey fileName:fileName mimeType:@"image/*"];
     } error:NULL];
     
     // 请求头
@@ -115,6 +115,9 @@
         NSError *error;
         
         switch (self.encryptType) {
+            case GHEncryptTypeNone: {
+                break;
+            }
             case GHEncryptTypeBase64: {
                 if (error == nil) {
                     NSString *valueString = nil;

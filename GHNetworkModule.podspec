@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GHNetworkModule'
-  s.version          = '1.1.5'
+  s.version          = '1.1.6'
   s.summary          = 'AF二次封装'
 
 # This description is used to generate tags and improve search results.

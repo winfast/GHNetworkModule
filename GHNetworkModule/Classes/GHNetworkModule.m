@@ -357,7 +357,7 @@
 }
 
 
-- (NSString *)requestMultipartData:(GHNetworkRequest *)request data:(NSData *)data progress:(void (^)(NSProgress *downloadProgress))progress complete:(GHNetworkResponseBlock)complete {
+- (NSString *)requestMultipartData:(GHNetworkRequest *)request data:(NSData *)data imageKey:(NSString *)imageKey progress:(void (^)(NSProgress *downloadProgress))progress complete:(GHNetworkResponseBlock)complete {
     __block NSURLSessionUploadTask *task = nil;
     
     if (GHNetworkConfigure.share.startReachability &&
@@ -375,7 +375,7 @@
     }
     if (GHNetworkConfigure.share.enableDebug) [GHNetworkLogger logDebugInfoWithRequest:request];
     
-    task = [self.sessionManager uploadTaskWithStreamedRequest:[request formDataRequest:data] progress:progress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    task = [self.sessionManager uploadTaskWithStreamedRequest:[request formDataRequest:data imageKey:imageKey] progress:progress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error && [response isKindOfClass:NSHTTPURLResponse.class]) {
             // 重写ERROR，重新code
             NSHTTPURLResponse *rsp = (NSHTTPURLResponse *)response;

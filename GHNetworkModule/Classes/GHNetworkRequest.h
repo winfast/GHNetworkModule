@@ -53,7 +53,7 @@
 - (NSURLRequest *)generateRequest;
 
 /** 生成上传实体 @return 请求对象*/
-- (NSURLRequest *)formDataRequest:(NSData *)imageData;
+- (NSURLRequest *)formDataRequest:(NSData *)imageData imageKey:(NSString *)imageKey;
 
 @end
 
